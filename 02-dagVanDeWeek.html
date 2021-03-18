@@ -9,10 +9,19 @@
     <script>
         "use strict"
         let nu          = new Date();
-        //let dag         = nu.getDay();
         let dagArray    = ["maandag", "dinsdag", "woendag", "donderdag", "vrijdag", "zaterdag", "zondag"];
-        let dag        = dagArray[nu.getDay()-1]   
-        document.write(dag);
+        let dag         = dagArray[nu.getDay()-1];
+        let dagnaam     = controle(nu.getDay())
+
+        function controle(dag) {
+            if (dag >= 1 && dag <= 5) {
+                return "Het is een werkdag, aan de slag dus."
+            }
+            else{
+                return "Het is weekend, even bekomen."
+            }
+        }      
+        document.write(`<p>Het is vandaag: "${dag}"</p><p>${dagnaam}</p>`);
     </script>
 </body>
 </html>
