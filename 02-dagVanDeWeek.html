@@ -6,6 +6,13 @@
     <title>Dag van de week</title>
 </head>
 <body>
-    
+    <script>
+        "use strict"
+        let nu          = new Date();
+        //let dag         = nu.getDay();
+        let dagArray    = ["maandag", "dinsdag", "woendag", "donderdag", "vrijdag", "zaterdag", "zondag"];
+        let dag        = dagArray[nu.getDay()-1]   
+        document.write(dag);
+    </script>
 </body>
 </html>
