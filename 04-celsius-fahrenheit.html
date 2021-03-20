@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celsius - Fahrenheit</title>
+    <style type="text/css">
+        button{
+            margin: .5rem;}
+            
+    </style>
+</head>
+<body>
+    <button onclick="vraag1()">Omzetten C naar F</button>
+    <button onclick="vraag2()">Omzetten F naar C</button>
+    <script>
+        "use strict"
+
+        //on click functies
+        function vraag1(){
+           let celsius = prompt("Hoeveel graden wil je omzetten?");
+           celsius= controle(celsius);
+           if (!fout) {
+            let berekeningc = (celsius*9)/5 + 32;
+            alert(`${celsius}°C is ${berekeningc}°F`);
+           }
+        }
+
+        function vraag2() {
+            let fahrenheit = prompt("Hoeveel graden wil je omzetten?");
+            fahrenheit= controle(fahrenheit);
+            if (!fout) {
+                let berekeningf = ((fahrenheit - 32)*5)/9
+                alert(`${fahrenheit}°C is ${berekeningf}°F`)
+            }
+        }
+
+         //controle functie
+
+         function controle(getal) {
+            if (getal == null){
+                alert(`U heeft geanuleerd`);
+                fout = true;
+            }else if (getal.length == 0){
+                alert(`U heeft niets ingevuld`);
+                fout = true;
+            }else if ( isNaN(getal)== true){
+                alert(`U moet een getal invullen.`);
+                fout = true;  
+            }else{
+                return getal                
+            }
+
+        }
+
+        //variablen
+
+        let fout = false;
+
+    </script>
+</body>
+</html>
