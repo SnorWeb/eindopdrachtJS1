@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koffie voor het leven</title>
+</head>
+<body>
+    <!-- 
+        Bij deze oefening heb ik extra controle toegevoegd.
+        - Het geboortejaar moet 4 cijfers bevatten.
+        - De verwachte leeftijd moet hoger zijn dan het huidige 
+        Voor de laatste heb ik de variable "exact" gemaakt en deze meegenomen in de controle functie.
+        Deze heb ik nog eens aangemaakt in tonen om te laten zien dat er een mogelijkheid bestaat om die daar te bereken. 
+        Als je bij jaartallen het jaar 1899 in geeft heb ik een kleine easter egg gemaakt voor de lol ;-).
+     -->
+    <script>
+        //functie 
+        function berekenHoeveelheid() {
+            let geboortejaar    = prompt(`Wat is je geboortejaar?`, "1984");
+            let leeftijd        = prompt(`Hoe oud denk je te worden?`,"70");
+            let koffie          = prompt(`Hoeveel tassen per dag drink je?`,"4");
+            let exact           = jaar - geboortejaar;
+            let ok              = controle(geboortejaar, leeftijd, koffie, exact);
+            if (!fout) {
+                let berekenen       = tonen(geboortejaar, leeftijd, koffie);
+            }
+        }
+
+        //controle
+        function controle(g1, g2, g3, g4) {
+            if (g1 == null || g2 == null || g2 == null) {
+                alert('Je hebt geannuleerd!');
+                fout = true;
+            }else if (g1.length == 0 || g2.length == 0 || g3.length == 0) {
+                alert(`Je hebt niks ingevuld`);
+                fout = true;
+            }else if (isNaN(g1) == true || isNaN(g2) == true || isNaN(g3) == true){ 
+                alert(`Je moet een getal invullen!`);
+                fout = true;
+            }else if (g1.search(/^\d{4}$/)==-1){
+                alert(`Het geboorte jaar moet 4 cijfers bevatten!`);
+                fout = true;
+            }else if ( g1 == 1899 ){ 
+                alert(`Jeanne Louise Calment de oudste mens ooit. Zij overleed in 1997 op 122-jarige leeftijd.`);
+                fout = true;
+            }else if (g2 <= g4){
+                alert('Je verwachte leeftijd kan niet lager of hetzelfde zijn als het huidige!')
+                fout = true
+            }else{
+                return g1,g2,g3
+            }
+        }
+
+        //berekening
+        function tonen(g1, g2, g3) {
+            let jaren   = jaar - g1;
+            let kopjes  = g3;
+            let oud     = g2;
+            let alles   = ((g2*365)*g3) - ((jaren*365)*g3);
+            document.write(`<p>Je bent nu ${jaren}. Tegen ${kopjes} koppen koffie per dag zal je ${alles} koppen koffie drinken als je ${oud} jaar oud zal worden.</p>`)
+        }
+
+        //variabel
+        let nu      = new Date();
+        let fout    = false;
+        let jaar    = nu.getFullYear();
+        let vragen  = berekenHoeveelheid();
+
+    </script>
+</body>
+</html>
