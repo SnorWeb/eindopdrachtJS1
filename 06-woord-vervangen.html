@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Woord vervangen</title>
+    <style>
+        body{
+            width: auto;
+            margin: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <form id="vervangen">
+        <h1>Vervang het woord</h1>
+        <p>
+            <label for="zin">Zin:</label><br>
+            <input type="text" id="zin" size="120px"/>
+        </p>
+        <p>
+            <label for="zoek">Zoek dit woord:</label>
+            <input type="text" id="zoek">
+        </p>
+        <p>
+            <label for="vervang">Dit woord komt in de plaats:</label>
+            <input type="text" id="vervang" value="">
+        </p>
+        <p>
+            <input type="button" value="Vervang" id="knop_verstuur" onclick="verzend()" />
+        </p>
+        <p>
+            <label for="nieuw">De nieuwe zin:</label><br>
+            <input type="text" id="nieuw_zin" size="120px" value="">
+        </p>
+    </form>
+    <script>
+
+        "use strict"
+
+        //variabellen
+
+        let zinTxt;
+        let zoekTxt     = document.getElementById("zoek").value;
+        let woord       = new RegExp(zoekTxt);
+        let vervangTxt  = document.getElementById("vervang").value;
+
+        //hoofdfunctie
+
+        function vervangWoord(){
+            if (zinTxt.search(zoekTxt) == -1) {
+                //return "Dit woord is niet gevonden";
+                alert("nok");
+            }
+            else{ 
+                zoekTxt.replace(vervangTxt);
+                alert(zoekTxt);
+                alert("ok");
+            }
+        }
+        
+        //controle
+
+        function verzend(){
+            zinTxt=document.getElementById("zin").value;
+            if(zinTxt.length==0){
+                alert("U hebt niks ingevuld!")
+                allesCorrectIngevuld = false;
+            }
+            else{
+                vervangWoord();
+            }
+        }        
+    </script>
+</body>
+</html>

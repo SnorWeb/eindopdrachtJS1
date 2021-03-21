@@ -12,6 +12,7 @@
         let dagArray    = ["maandag", "dinsdag", "woendag", "donderdag", "vrijdag", "zaterdag", "zondag"];
         let dag         = dagArray[nu.getDay()-1];
         let dagnaam     = controle(nu.getDay())
+        console.log(nu.getDay())
 
         function controle(dag) {
             if (dag >= 1 && dag <= 5) {
