@@ -16,61 +16,60 @@
         <h1>Vervang het woord</h1>
         <p>
             <label for="zin">Zin:</label><br>
-            <input type="text" id="zin" size="120px"/>
+            <input type="text" id="zin" value="Javascript rocks!" size="120px"/>
         </p>
         <p>
             <label for="zoek">Zoek dit woord:</label>
-            <input type="text" id="zoek">
+            <input type="text" id="zoek" value="rocks">
         </p>
         <p>
             <label for="vervang">Dit woord komt in de plaats:</label>
-            <input type="text" id="vervang" value="">
+            <input type="text" id="vervang" value="rules">
         </p>
         <p>
-            <input type="button" value="Vervang" id="knop_verstuur" onclick="verzend()" />
+            <input type="button" value="send" id="knop_verstuur" onclick="verzend()" />
         </p>
         <p>
             <label for="nieuw">De nieuwe zin:</label><br>
-            <input type="text" id="nieuw_zin" size="120px" value="">
+            <input type="text" id="nieuw_zin" size="120px" value=" ">
         </p>
     </form>
     <script>
 
         "use strict"
 
-        //variabellen
-
-        let zinTxt;
-        let zoekTxt     = document.getElementById("zoek").value;
-        let woord       = new RegExp(zoekTxt);
-        let vervangTxt  = document.getElementById("vervang").value;
-
-        //hoofdfunctie
-
-        function vervangWoord(){
-            if (zinTxt.search(zoekTxt) == -1) {
-                //return "Dit woord is niet gevonden";
-                alert("nok");
+        //functie controle
+        function verzend() {
+            let zinTxt = document.getElementById("zin").value;
+            if (zinTxt == 0) {
+                alert(`Je hebt niets ingevuld!`)
             }
-            else{ 
-                zoekTxt.replace(vervangTxt);
-                alert(zoekTxt);
-                alert("ok");
+            else if (isNaN(zinTxt) == false){
+                alert(`Voer een nummer in!`)
             }
+            else vervangWoord()
         }
-        
-        //controle
 
-        function verzend(){
-            zinTxt=document.getElementById("zin").value;
-            if(zinTxt.length==0){
-                alert("U hebt niks ingevuld!")
-                allesCorrectIngevuld = false;
+        //function vervang
+        function vervangWoord() {
+            let zinTxt      = document.getElementById("zin").value;
+            let splitzin    = zinTxt.split(" ");
+            let zoekTxt     = document.getElementById("zoek").value;
+            let vervangTxt  = document.getElementById("vervang").value;
+            console.log(splitzin);
+            console.log(zoekTxt);
+            if (zinTxt.indexOf(`${zoekTxt}`) == -1 ) {
+                alert("fout");
+                document.getElementById("nieuw_zin").value = "Dit woord is niet gevonden!";
             }
             else{
-                vervangWoord();
+
+                let substring = zinTxt.indexOf(`${zoekTxt}`);
+                document.getElementById("nieuw_zin").value = zinTxt.replace(`${zoekTxt}`,`${vervangTxt}`);
             }
-        }        
+        }
+        //Verder dan dit geraak ik niet. Ik snap niet hoe je met substrings de woorden kunt vervangen.
     </script>
+    
 </body>
 </html>
